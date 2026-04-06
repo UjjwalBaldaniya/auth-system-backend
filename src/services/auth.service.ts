@@ -78,6 +78,9 @@ export const signinUser = async ({ email, password }: LoginPayload) => {
   return {
     accessToken,
     refreshToken,
+    userId: user._id.toString(),
+    username: user.username,
+    email: user.email,
   };
 };
 
