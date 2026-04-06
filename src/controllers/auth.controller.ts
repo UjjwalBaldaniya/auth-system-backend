@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import {
+  handleGoogleLogin,
   handleRefreshToken,
   signinUser,
   signupUser,
@@ -29,4 +30,12 @@ export const refreshToken = async (req: Request, res: Response) => {
   return res
     .status(200)
     .json(new ApiResponse("Access token refreshed", result));
+};
+
+export const googleLogin = async (req: Request, res: Response) => {
+  const result = await handleGoogleLogin(req.body.token);
+
+  return res
+    .status(200)
+    .json(new ApiResponse("Google login successful", result));
 };
